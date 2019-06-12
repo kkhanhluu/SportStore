@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Product } from "./product.model";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -7,6 +7,11 @@ import { Order } from "./order.model";
 
 const PROTOCOL = "http";
 const PORT = 3500;
+
+export interface AuthenticationResponse {
+  success: boolean;
+  token: string;
+}
 
 @Injectable()
 export class RestDataSource {
@@ -27,7 +32,7 @@ export class RestDataSource {
 
   authenticate(user: string, password: string): Observable<boolean> {
     return this.http
-      .post(this.baseUrl + "login", {
+      .post<AuthenticationResponse>(this.baseUrl + "login", {
         name: user,
         password: password
       })
