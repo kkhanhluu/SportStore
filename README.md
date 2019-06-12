@@ -1,1 +1,2 @@
 # SportStore
+An Angular app
