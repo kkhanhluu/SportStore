@@ -21,4 +21,4 @@ app.use("/api", router);
 app.use(history());
 app.use("/", express.static("./dist/mySportStore"));
 
-app.listen(80, () => console.log("HTTP Server running on port 80"));
+app.listen(8080, () => console.log("HTTP Server running on port 80"));
